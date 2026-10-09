@@ -157,3 +157,135 @@ h1 {
   }
 }
 
+.footer {
+    background: transparent;
+    padding: 2rem 0;
+}
+
+.footer__featured {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.web_amiga {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: inherit;
+  text-decoration: none;
+}
+
+.web_amiga img {
+  display: block;
+  width: min(200px, 42vw);
+  height: auto;
+}
+
+.footer__featured .footer__donacion {
+  align-items: center;
+  text-align: center;
+}
+
+.footer__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.footer__logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.footer__donacion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer__donacion-texto,
+.footer__copy {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.footer__qr-placeholder {
+    width: 80px;
+    height: 80px;
+    border: 2px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer__qr-placeholder span {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.3);
+    text-align: center;
+    padding: 0.25rem;
+}
+
+.footer__qr {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+}
+
+.footer__nav {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer__nav a {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+    transition: all 0.2s ease;
+}
+
+.footer__nav a:hover {
+    color: #fff;
+}
+
+@media (min-width: 768px) {
+    .footer {
+        padding: 3rem 0;
+    }
+
+    .footer__inner {
+        display: grid;
+        grid-template-columns: auto 1fr auto auto;
+        align-items: center;
+        text-align: left;
+    }
+
+    .footer__featured {
+      grid-column: 1 / -1;
+    }
+
+    .footer__donacion {
+        align-items: flex-start;
+    }
+
+    .footer__copy {
+        font-size: 0.875rem;
+    }
+
+    .footer__nav {
+        gap: 1.5rem;
+    }
+
+    .footer__nav a {
+        font-size: 0.875rem;
+    }
+}
+

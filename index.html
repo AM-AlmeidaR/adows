@@ -29,6 +29,31 @@
             </a>
         </div>
     </div>
+        
+    <footer class="footer">
+        <div class="contenedor footer__inner">
+            <div class="footer__featured">
+                <a class="web_amiga" href="https://citamedica.pro">
+                    <p>Web amiga</p>
+                    <img src="img/citamedica_pro.png" alt="CitaMédica.Pro" width="200">
+                </a>
+                <div class="footer__donacion">
+                    <p class="footer__donacion-texto">¿Te ayudamos? Ayudanos tu tambien</p>
+                    <div class="footer__qr-placeholder">
+                        <img src="img/QR_PayPalMe_Donar.png" alt="QR donacion" class="footer__qr">
+                    </div>
+                </div>
+            </div>
+            <p class="footer__copy">Creación y Diseño: <a href="https://am-almeidar.github.io/portfolio2026/" 
+                target="_blank" rel="noopener noreferrer">AM_AlmeidaR</a> &copy; 2026 CitaMedica.pro Todos los derechos reservados.</p>
+            <nav class="footer__nav">
+                <a href="{% url 'main:aviso_legal' %}">Aviso legal</a>
+                <a href="{% url 'main:privacidad' %}">Privacidad</a>
+                <a href="{% url 'main:cookies' %}">Cookies</a>
+            </nav>
+        </div>
+    </footer>
+
 </body>
 <script>
     document.querySelectorAll(".welding-card").forEach((card) => {
