@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}WeldSolutions{% endblock %}</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Andrei D. Orban Welding Solutions</h1>
+
+    <div class="welding-card">
+        <div class="welding-content">
+            <span class="welding-label">SOLUCIONES en SOLDADURAS</span>
+
+            <h2>Precisión y Fuerza en cada unión. </h2>
+            <h2>La Perfection en cada Soldadura.</h2>
+
+            <p>
+            Soluciones de soldadura con electrodo, TIG y MIG para proyectos de máxima exigencia.
+            </p> 
+            <p>
+            Desde pequeñas Soluciones hasta grandes Proyectos. Acero Inoxidable, Hierro, Aluminio, Bronce, Titanio, etc.
+            </p>
+
+            <a href="#contacto" class="welding-button">
+            Solicitar presupuesto
+            </a>
+        </div>
+    </div>
+</body>
+<script>
+    document.querySelectorAll(".welding-card").forEach((card) => {
+    let sparkTimer;
+
+    function createSpark() {
+        const spark = document.createElement("span");
+        spark.className = "welding-spark";
+
+        const width = card.clientWidth;
+        const height = card.clientHeight;
+
+        // Elegir aleatoriamente uno de los cuatro bordes
+        const side = Math.floor(Math.random() * 4);
+
+        let x, y, angle;
+
+        if (side === 0) {
+        x = Math.random() * width;
+        y = 2;
+        angle = -Math.PI / 2;
+        } else if (side === 1) {
+        x = width - 2;
+        y = Math.random() * height;
+        angle = 0;
+        } else if (side === 2) {
+        x = Math.random() * width;
+        y = height - 2;
+        angle = Math.PI / 2;
+        } else {
+        x = 2;
+        y = Math.random() * height;
+        angle = Math.PI;
+        }
+
+        // Variar la dirección para que no parezcan rayos idénticos
+        angle += (Math.random() - 0.5) * 1.8;
+
+        const distance = 12 + Math.random() * 38;
+        const dx = Math.cos(angle) * distance;
+        const dy = Math.sin(angle) * distance;
+
+        spark.style.left = `${x}px`;
+        spark.style.top = `${y}px`;
+
+        // Tamaño y duración variables
+        const size = 1 + Math.random() * 2.5;
+        const duration = 180 + Math.random() * 350;
+
+        spark.style.width = `${size}px`;
+        spark.style.height = `${size}px`;
+
+        spark.style.setProperty("--dx", `${dx}px`);
+        spark.style.setProperty("--dy", `${dy}px`);
+        spark.style.setProperty("--duration", `${duration}ms`);
+
+        card.appendChild(spark);
+
+        // Eliminar la partícula cuando termine la animación
+        setTimeout(() => spark.remove(), duration);
+    }
+
+    function startSparks() {
+        if (sparkTimer) return;
+
+        sparkTimer = setInterval(() => {
+        // Pequeñas ráfagas irregulares
+        if (Math.random() > 0.3) {
+            const count = 1 + Math.floor(Math.random() * 3);
+
+            for (let i = 0; i < count; i++) {
+            setTimeout(createSpark, Math.random() * 100);
+            }
+        }
+        }, 100);
+    }
+
+    function stopSparks() {
+        clearInterval(sparkTimer);
+        sparkTimer = null;
+    }
+
+    // Respetar la preferencia del usuario por reducir movimiento
+    const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    );
+
+    if (!reducedMotion.matches) {
+        startSparks();
+    }
+
+    reducedMotion.addEventListener("change", (event) => {
+        if (event.matches) {
+        stopSparks();
+        card.querySelectorAll(".welding-spark").forEach((spark) => {
+            spark.remove();
+        });
+        } else {
+        startSparks();
+        }
+    });
+    });
+</script>
