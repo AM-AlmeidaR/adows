@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}WeldSolutions{% endblock %}</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="proyectos.html">Proyectos</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <h1>Andrei D. Orban Welding Solutions</h1>
+
+    <div class="welding-card">
+        <div class="welding-content">
+            <div class="services-text">
+                <h2 class="services-h2">Maestría en Soldadura Naval e Industrial: 
+                    Más de 20 Años Uniendo Estructuras con Precisión</h2>
+
+                <p class="services-p">En el sector de la soldadura, la improvisación no tiene cabida; 
+                    la experiencia y la certificación técnica lo son todo. 
+                    Con más de dos décadas de trayectoria profesional, 
+                    dominamos con absoluta precisión los cuatro procesos clave del sector: 
+                    Arco (MMA), MAG, MIG y TIG.</p>
+                <p class="services-p">Nuestra máxima especialización se encuentra en el ámbito de la 
+                    náutica y la reparación naval. El mar no perdona los errores: 
+                    los entornos salinos exigen soldaduras perfectas, herméticas y 
+                    de alta resistencia estructural. Sabemos que un fallo en un componente 
+                    marino puede comprometer la seguridad de una embarcación. 
+                    Por ello, aplicamos el procedimiento exacto que cada metal requiere:</p>
+                <ul>
+                    <li class="services-li">TIG de Alta Precisión: 
+                        Crucial para tuberías de acero inoxidable, componentes de cubierta y titanio. 
+                        Cordones limpios y máxima resistencia frente a la corrosión marina.</li>
+                    <li class="services-li">MIG Especializado: 
+                        La técnica idónea para estructuras, cascos y superestructuras de aluminio naval, 
+                        garantizando ligereza y robustez.</li>
+                    <li class="services-li">MAG de Alto Rendimiento: 
+                        Optimizado para la fabricación y reparación de componentes de acero al carbono 
+                        pesados y estructuras portuarias.</li>
+                    <li class="services-li">Arco Eléctrico (MMA): 
+                        Versatilidad y máxima penetración para reparaciones estructurales críticas 
+                        directamente a pie de muelle o en exteriores.</li>
+                </ul>
+                <p class="services-p">No nos limitamos a unir metales; garantizamos la integridad de su inversión bajo 
+                    los estándares y normativas más estrictos. Veinte años de armadores, astilleros 
+                    y empresas industriales satisfechas avalan nuestro compromiso con la excelencia técnica.</p>
+                <p class="services-p">Confíe sus proyectos estructurales a manos expertas. Confíe en profesionales de la soldadura.</p>
+            </div>
+        </div>
+    </div>
+        
+    <footer class="footer">
+        <div class="contenedor footer__inner">
+            <div class="footer__featured">
+                <a class="web_amiga" href="https://citamedica.pro">
+                    <p>Web amiga</p>
+                    <img src="img/citamedica_pro.png" alt="CitaMédica.Pro" width="200">
+                </a>
+                <div class="footer__donacion">
+                    <p class="footer__donacion-texto">¿Te gusta el diseño? Ayuda al diseñador</p>
+                    <div class="footer__qr-placeholder">
+                        <img src="img/QR_PayPalMe_Donar.png" alt="QR donacion" class="footer__qr">
+                    </div>
+                </div>
+            </div>
+            <p class="footer__copy">Creación y Diseño: <a href="https://am-almeidar.github.io/portfolio2026/" 
+                target="_blank" rel="noopener noreferrer">AM_AlmeidaR</a> &copy; 2026 CitaMedica.pro Todos los derechos reservados.</p>
+            <nav class="footer__nav">
+                <a href="{% url 'main:aviso_legal' %}">Aviso legal</a>
+                <a href="{% url 'main:privacidad' %}">Privacidad</a>
+                <a href="{% url 'main:cookies' %}">Cookies</a>
+            </nav>
+        </div>
+    </footer>
+
+</body>
+<script>
+    document.querySelectorAll(".welding-card").forEach((card) => {
+    let sparkTimer;
+
+    function createSpark() {
+        const spark = document.createElement("span");
+        spark.className = "welding-spark";
+
+        const width = card.clientWidth;
+        const height = card.clientHeight;
+
+        // Elegir aleatoriamente uno de los cuatro bordes
+        const side = Math.floor(Math.random() * 4);
+
+        let x, y, angle;
+
+        if (side === 0) {
+        x = Math.random() * width;
+        y = 2;
+        angle = -Math.PI / 2;
+        } else if (side === 1) {
+        x = width - 2;
+        y = Math.random() * height;
+        angle = 0;
+        } else if (side === 2) {
+        x = Math.random() * width;
+        y = height - 2;
+        angle = Math.PI / 2;
+        } else {
+        x = 2;
+        y = Math.random() * height;
+        angle = Math.PI;
+        }
+
+        // Variar la dirección para que no parezcan rayos idénticos
+        angle += (Math.random() - 0.5) * 1.8;
+
+        const distance = 12 + Math.random() * 38;
+        const dx = Math.cos(angle) * distance;
+        const dy = Math.sin(angle) * distance;
+
+        spark.style.left = `${x}px`;
+        spark.style.top = `${y}px`;
+
+        // Tamaño y duración variables
+        const size = 1 + Math.random() * 2.5;
+        const duration = 180 + Math.random() * 350;
+
+        spark.style.width = `${size}px`;
+        spark.style.height = `${size}px`;
+
+        spark.style.setProperty("--dx", `${dx}px`);
+        spark.style.setProperty("--dy", `${dy}px`);
+        spark.style.setProperty("--duration", `${duration}ms`);
+
+        card.appendChild(spark);
+
+        // Eliminar la partícula cuando termine la animación
+        setTimeout(() => spark.remove(), duration);
+    }
+
+    function startSparks() {
+        if (sparkTimer) return;
+
+        sparkTimer = setInterval(() => {
+        // Pequeñas ráfagas irregulares
+        if (Math.random() > 0.3) {
+            const count = 1 + Math.floor(Math.random() * 3);
+
+            for (let i = 0; i < count; i++) {
+            setTimeout(createSpark, Math.random() * 100);
+            }
+        }
+        }, 100);
+    }
+
+    function stopSparks() {
+        clearInterval(sparkTimer);
+        sparkTimer = null;
+    }
+
+    // Respetar la preferencia del usuario por reducir movimiento
+    const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    );
+
+    if (!reducedMotion.matches) {
+        startSparks();
+    }
+
+    reducedMotion.addEventListener("change", (event) => {
+        if (event.matches) {
+        stopSparks();
+        card.querySelectorAll(".welding-spark").forEach((spark) => {
+            spark.remove();
+        });
+        } else {
+        startSparks();
+        }
+    });
+    });
+</script>

@@ -24,8 +24,39 @@ body {
     linear-gradient(135deg, #101718, #1b2424 58%, #26302d);
 }
 
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: var(--panel);
+  padding: 10px 20px;
+  z-index: 1000;
+}
+
+.navbar ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+}
+
+.navbar ul li a:hover {
+  transition: color 500ms ease;
+  border-bottom: 4px solid currentColor;
+  border-color: #1F51FF;
+  padding-bottom: 4px;
+  color: #1F51FF;
+  font-weight: bold;
+}
+
 h1 {
-    position: sticky;
     top: 10px;
     margin: 0 0 32px;
     font-family: roboto, sans-serif;
@@ -71,7 +102,7 @@ h1 {
 }
 
 .welding-content h2 {
-  max-width: 12ch;
+  max-width: 22ch;
   margin: 0 auto 24px;
   font-family: Georgia, serif;
   font-size: 3.25rem;
@@ -80,7 +111,7 @@ h1 {
 }
 
 .welding-content p {
-  max-width: 58ch;
+  max-width: 70ch;
   margin: 0 auto 14px;
   color: var(--muted);
   font-size: 1rem;
@@ -289,3 +320,15 @@ h1 {
     }
 }
 
+.services-text {
+    max-width: 100%;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.services-h2 {
+    max-width: 100%;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
