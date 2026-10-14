@@ -188,6 +188,20 @@ h1 {
   }
 }
 
+.services-text p {
+    max-width: 100%;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.services-text ul li {
+    max-width: 100%;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
 .footer {
     background: transparent;
     padding: 2rem 0;
@@ -215,6 +229,11 @@ h1 {
   display: block;
   width: min(200px, 42vw);
   height: auto;
+}
+
+.footer__main__container__image img {
+  width: 40px;
+  height: 40px;
 }
 
 .footer__featured .footer__donacion {
