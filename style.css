@@ -139,6 +139,7 @@ h1 {
 }
 
 .welding-button {
+  position: relative;
   min-height: 48px;
   display: inline-flex;
   align-items: center;
